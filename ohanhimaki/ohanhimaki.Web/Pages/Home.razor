@@ -1,7 +1,49 @@
-﻿@page "/"
+﻿@page "/{pageNumber:int?}"
+@inject NavigationManager Navigation
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Teksti-TV</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="page-input">
+    @inputDisplay
+</div>
 
-Welcome to your new app.
+<div class="page-content">
+    @switch (pageNumber)
+    {
+        case 200:
+            <BlogList />
+            break;
+        @* case 300: *@
+        @*     <TagList /> *@
+        @*     break; *@
+        @* case 301: *@
+        @*     <TagPage /> *@
+        @*     break; *@
+        default:
+            <HomePage />
+            break;
+    }
+</div>
+
+@code {
+    [Parameter] public int? pageNumber { get; set; } = 100;
+
+    private string inputBuffer = "";
+    private string inputDisplay = "***";
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key.Length == 1 && char.IsDigit(e.Key[0])) 
+        {
+            inputBuffer += e.Key;
+            inputDisplay = inputBuffer.PadRight(3, '*');
+
+            if (inputBuffer.Length == 3) 
+            {
+                Navigation.NavigateTo($"/{inputBuffer}");
+                inputBuffer = "";
+                inputDisplay = "***";
+            }
+        }
+    }
+}

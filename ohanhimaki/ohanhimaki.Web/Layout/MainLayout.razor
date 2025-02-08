@@ -1,3 +1,37 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
-@Body
+<div class="tekstitv-container" @onkeydown="HandleKeyDown" tabindex="0">
+    <div class="page-input">
+        @inputDisplay
+    </div>
+    @Body
+</div>
+
+@code {
+    private string inputBuffer = "";
+    private string inputDisplay = "***"; // Shows "***" when empty
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key.Length == 1 && char.IsDigit(e.Key[0])) 
+        {
+            inputBuffer += e.Key;
+
+            // Show numbers progressively (e.g., "1**", "10*", "100")
+            inputDisplay = inputBuffer.PadRight(3, '*');
+
+            if (inputBuffer.Length == 3) 
+            {
+                NavigateToPage(inputBuffer);
+                inputBuffer = "";
+                inputDisplay = "***"; // Reset display
+            }
+        }
+    }
+
+    private void NavigateToPage(string page)
+    {
+        NavigationManager.NavigateTo($"/{page}");
+    }
+}
