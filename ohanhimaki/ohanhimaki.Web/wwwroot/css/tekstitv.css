@@ -1,15 +1,41 @@
 ﻿.tekstitv-container {
-    display: grid;
+    display: inline;
     grid-template-columns: repeat(40, 1fr);
     grid-template-rows: repeat(25, 1fr);
     width: 100vw;
-    height: 100vh;
-    font-family: 'Courier New', monospace;
+    min-height: 100vh;
     background-color: black;
-    color: yellow;
+    color: white;
     text-transform: uppercase;
-    padding: 5px;
+    padding: 0;
     outline: none;
+}
+
+/*make text pixelated */
+.tekstitv-container {
+    image-rendering: pixelated;
+}
+
+
+.page-input {
+    
+    left: 0;
+}
+
+.blue-banner {
+    background-color: blue;
+    color: white;
+    padding: 0 5px;
+    font-size: 12px;
+}
+
+.input-error {
+    color: red;
+    
+}
+
+.page-input > p {
+    margin: 0;
 }
 
 a {
@@ -30,5 +56,5 @@ html, body {
     height: 100%;
     overflow: hidden;
     background-color: black;
-    font-family: 'Courier New', monospace;
+    font-family: 'Press Start 2p', monospace;
 }

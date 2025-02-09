@@ -1,5 +1,26 @@
-﻿<h3>BlogList</h3>
+﻿@inject BlogService BlogService
+
+
+@if (_blogs is not null)
+{
+    
+foreach(var blog in _blogs)
+{
+    <div class="blog-post">
+        @blog.Title 
+    </div>
+    
+}
+
+}
 
 @code {
-    
+    private IEnumerable<BlogPost>? _blogs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _blogs = await BlogService.GetAllPostsAsync();
+        await base.OnInitializedAsync();
+    }
+
 }

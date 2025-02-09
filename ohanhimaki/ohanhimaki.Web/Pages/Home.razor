@@ -3,47 +3,106 @@
 
 <PageTitle>Teksti-TV</PageTitle>
 
-<div class="page-input">
-    @inputDisplay
-</div>
+<div class="tekstitv-container" @onkeydown="HandleKeyDown" tabindex="0">
+    <div class="page-input">
+        @{
+            var className = _inputIsError ? "input-error" : "";
+        
+            <div class="@className">
+                @("p"+inputDisplay)
+            </div>
+        }
+        
+    </div>
 
-<div class="page-content">
-    @switch (pageNumber)
-    {
-        case 200:
-            <BlogList />
-            break;
-        @* case 300: *@
-        @*     <TagList /> *@
-        @*     break; *@
-        @* case 301: *@
-        @*     <TagPage /> *@
-        @*     break; *@
-        default:
-            <HomePage />
-            break;
-    }
+    <div class="page-content">
+        @switch (pageNumber)
+        {
+            case 200:
+                <BlogList/>
+                break;
+            @* case 300: *@
+            @*     <TagList /> *@
+            @*     break; *@
+            @* case 301: *@
+            @*     <TagPage /> *@
+            @*     break; *@
+            default:
+                <HomePage/>
+                break;
+        }
+    </div>
 </div>
 
 @code {
-    [Parameter] public int? pageNumber { get; set; } = 100;
+
+    private void NavigateToPage(string page)
+    {
+        Navigation.NavigateTo($"/{page}");
+    }
+
+[Parameter] public int? pageNumber { get; set; } = 100;
 
     private string inputBuffer = "";
     private string inputDisplay = "***";
+    private bool _inputIsError;
+
+    protected override void OnParametersSet()
+    {
+        inputDisplay = pageNumber?.ToString() ?? "xxx";
+        base.OnParametersSet();
+    }
 
     private async Task HandleKeyDown(KeyboardEventArgs e)
     {
         if (e.Key.Length == 1 && char.IsDigit(e.Key[0])) 
         {
+            
             inputBuffer += e.Key;
             inputDisplay = inputBuffer.PadRight(3, '*');
 
             if (inputBuffer.Length == 3) 
             {
-                Navigation.NavigateTo($"/{inputBuffer}");
-                inputBuffer = "";
-                inputDisplay = "***";
+                var result = CheckIfViablePage(inputBuffer);
+                Console.WriteLine($"result: {result} inputBuffer: {inputBuffer}");
+                if(result)
+                {
+                    Navigation.NavigateTo($"/{inputBuffer}");
+                    inputBuffer = "";
+                    // inputDisplay = "***";
+                }
+                else
+                {
+                    MarkInputError();
+                }
+                // inputDisplay = "***";
             }
         }
     }
+
+    private async Task MarkInputError()
+    {
+        _inputIsError = true;
+        StateHasChanged();
+        // wait 1sec
+        await Task.Delay(1000);
+        _inputIsError = false;
+        inputBuffer = "";
+        inputDisplay = pageNumber?.ToString() ?? "xxx";
+        StateHasChanged();
+    }
+
+    private bool CheckIfViablePage(string s)
+    {
+        if (int.TryParse(s, out int result))
+        {
+            var valid = new List<int>() { 100, 200 };
+            if (valid.Contains(result) )
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

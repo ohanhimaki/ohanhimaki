@@ -5,24 +5,29 @@ using YamlDotNet.Serialization;
 public class BlogService
 {
     private readonly HttpClient _http;
-    private readonly Dictionary<string, BlogPost> _posts = new();
+    private Dictionary<string, BlogPost>? _posts;
+    
 
     public BlogService(HttpClient http)
     {
         _http = http;
     }
 
-    public async Task InitializeAsync()
+    public async Task<IEnumerable<BlogPost>> GetAllPostsAsync()
     {
-        var files = await _http.GetFromJsonAsync<List<string>>("blog/index.json");
-        if (files is null) return;
+        if (_posts is not null) return _posts.Values.OrderByDescending(x => x.Date);
+        var files = await _http.GetFromJsonAsync<List<BlogPost>>("blog/index.json");
+        
+        var tmpPosts = new Dictionary<string, BlogPost>();
 
         foreach (var file in files)
         {
-            var markdown = await _http.GetStringAsync($"blog/{file}");
+            var markdown = await _http.GetStringAsync($"blog/{file.File}");
             var post = ParseMarkdown(markdown);
-            _posts[file] = post;
+            tmpPosts[file.File] = post;
         }
+        _posts = tmpPosts;
+        return _posts.Values.OrderByDescending(x => x.Date);
     }
 
     private BlogPost ParseMarkdown(string markdown)
@@ -45,5 +50,6 @@ public class BlogService
         };
     }
 
-    public IEnumerable<BlogPost> GetAllPosts() => _posts.Values.OrderByDescending(p => p.Date);
+    // public IEnumerable<BlogPost> GetAllPosts() => _posts.Values.OrderByDescending(p => p.Date);
+    // public Task<IEnumerable<BlogPost>> GetAllPostsAsync() => Task.FromResult(_posts.Values.OrderByDescending(p => p.Date));
 }
