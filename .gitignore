@@ -482,4 +482,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-ohanhimaki/ohanhimaki.Web/wwwroot/blog/index.json
+ohanhimaki/ohanhimaki.Web/wwwroot/blog/*
