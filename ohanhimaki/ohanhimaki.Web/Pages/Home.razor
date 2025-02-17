@@ -1,6 +1,7 @@
 ﻿@page "/{pageNumber:int?}"
 @inject NavigationManager Navigation
 @inject BlogService BlogService
+@inject PagesService PagesService
 
 <PageTitle>Teksti-TV</PageTitle>
 
@@ -24,36 +25,17 @@
         else
         {
             
-            switch (pageNumber)
+            var componentType = PagesService.GetPageComponent(pageNumber ?? 100);
+
+            if (componentType == typeof(BlogPostPage))
             {
-                case 200:
-                    <BlogList/>
-                    break;
-                @* case 300: *@
-                @*     <TagList /> *@
-                @*     break; *@
-                @* case 301: *@
-                @*     <TagPage /> *@
-                @*     break; *@
-                default:
-                    if (pageNumber >= 201 && (200 + _posts.Count) >= pageNumber)
-                    {
-                        var blogIndex = (pageNumber - 200) ?? 0;
-                        var blog = _posts.ElementAtOrDefault(blogIndex - 1);
-
-                        <BlogPostPage Blog="@blog"/>
-
-                    }
-                    else if (pageNumber == 300)
-                    {
-                        <GitHubPage/>
-                    }
-                    else
-                    {
-                        <HomePage/>
-                    }
-
-                    break;
+                var blogIndex = (pageNumber - 200) ?? 0;
+                var blog = _posts.ElementAtOrDefault(blogIndex - 1);
+                <BlogPostPage Blog="@blog"/>
+            }
+            else
+            {
+                <DynamicComponent Type="componentType"/>
             }
         }
     </div>
@@ -112,7 +94,7 @@
         // up and down for bigger and smaller
         else if (e.Key == "ArrowUp")
         {
-            var validPages = GetValidPages();
+            var validPages = PagesService.GetValidPages();
             
             var current = pageNumber ?? 100;
             var currentIndex = validPages.IndexOf(current);
@@ -125,7 +107,7 @@
         }
         else if (e.Key == "ArrowDown")
         {
-            var validPages = GetValidPages();
+            var validPages = PagesService.GetValidPages();
             
             var current = pageNumber ?? 100;
             var currentIndex = validPages.IndexOf(current);
@@ -151,15 +133,6 @@
         StateHasChanged();
     }
     
-    private List<int> GetValidPages()
-    {
-        var valid = new List<int>() { 100, 200 };
-        for (int i = 0; i < _posts.Count; i++)
-        {
-            valid.Add(201 + i);
-        }
-        return valid;
-    }
 
     private bool CheckIfViablePage(string s)
     {
