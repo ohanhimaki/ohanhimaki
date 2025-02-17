@@ -29,6 +29,22 @@
     font-size: 12px;
 }
 
+/*blog post headers with banners*/
+
+.blog-post-container > h2 {
+    background-color: darkviolet;
+    color: white;
+    padding: 0 5px;
+    font-size: 24px;
+}
+
+.blog-post-container > h3 {
+    background-color: darkgreen;
+    color: white;
+    padding: 0 5px;
+    font-size: 20px;
+}
+
 .input-error {
     color: red;
     

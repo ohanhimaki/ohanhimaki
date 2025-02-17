@@ -1,0 +1,10 @@
+﻿<div class="blog-post-container">
+    @((MarkupString)Blog.Content)
+
+</div>
+
+@code {
+    
+    [Parameter] public BlogPost Blog { get; set; }
+    
+}

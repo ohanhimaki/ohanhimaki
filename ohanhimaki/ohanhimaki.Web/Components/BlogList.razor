@@ -1,13 +1,20 @@
 ﻿@inject BlogService BlogService
 
 
+<div class="blue-banner">
+    <h1>Blogi lista</h1>
+    <p>Kirjoituksia arjesta ja harrasteprojekteistani</p>
+
+</div>
+
 @if (_blogs is not null)
 {
-    
+    var i = 0;
 foreach(var blog in _blogs)
 {
+    i++;
     <div class="blog-post">
-        @blog.Title 
+         @(200+i)  @blog.Title 
     </div>
     
 }

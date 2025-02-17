@@ -1,9 +1,10 @@
 ﻿@page "/{pageNumber:int?}"
 @inject NavigationManager Navigation
+@inject BlogService BlogService
 
 <PageTitle>Teksti-TV</PageTitle>
 
-<div class="tekstitv-container" @onkeydown="HandleKeyDown" tabindex="0">
+<div class="tekstitv-container" @onkeydown="HandleKeyDown" @onmousedown="FocusContainer" tabindex="0" @ref="_containerRef">
     <div class="page-input">
         @{
             var className = _inputIsError ? "input-error" : "";
@@ -16,20 +17,44 @@
     </div>
 
     <div class="page-content">
-        @switch (pageNumber)
+        @if (_posts is null)
         {
-            case 200:
-                <BlogList/>
-                break;
-            @* case 300: *@
-            @*     <TagList /> *@
-            @*     break; *@
-            @* case 301: *@
-            @*     <TagPage /> *@
-            @*     break; *@
-            default:
-                <HomePage/>
-                break;
+            <div>Loading...</div>
+        }
+        else
+        {
+            
+            switch (pageNumber)
+            {
+                case 200:
+                    <BlogList/>
+                    break;
+                @* case 300: *@
+                @*     <TagList /> *@
+                @*     break; *@
+                @* case 301: *@
+                @*     <TagPage /> *@
+                @*     break; *@
+                default:
+                    if (pageNumber >= 201 && (200 + _posts.Count) >= pageNumber)
+                    {
+                        var blogIndex = (pageNumber - 200) ?? 0;
+                        var blog = _posts.ElementAtOrDefault(blogIndex - 1);
+
+                        <BlogPostPage Blog="@blog"/>
+
+                    }
+                    else if (pageNumber == 300)
+                    {
+                        <GitHubPage/>
+                    }
+                    else
+                    {
+                        <HomePage/>
+                    }
+
+                    break;
+            }
         }
     </div>
 </div>
@@ -46,11 +71,17 @@
     private string inputBuffer = "";
     private string inputDisplay = "***";
     private bool _inputIsError;
+    private List<BlogPost>? _posts;
 
-    protected override void OnParametersSet()
+
+    protected override async Task OnParametersSetAsync()
     {
         inputDisplay = pageNumber?.ToString() ?? "xxx";
-        base.OnParametersSet();
+
+        _posts = (await BlogService.GetAllPostsAsync()).ToList();
+        
+        await base.OnParametersSetAsync();
+        
     }
 
     private async Task HandleKeyDown(KeyboardEventArgs e)
@@ -73,10 +104,38 @@
                 }
                 else
                 {
-                    MarkInputError();
+                    await MarkInputError();
                 }
                 // inputDisplay = "***";
             }
+        }
+        // up and down for bigger and smaller
+        else if (e.Key == "ArrowUp")
+        {
+            var validPages = GetValidPages();
+            
+            var current = pageNumber ?? 100;
+            var currentIndex = validPages.IndexOf(current);
+            if (currentIndex < validPages.Count - 1)
+            {
+                pageNumber = validPages[currentIndex + 1];
+                NavigateToPage(pageNumber.ToString());
+            }
+            inputBuffer = "";
+        }
+        else if (e.Key == "ArrowDown")
+        {
+            var validPages = GetValidPages();
+            
+            var current = pageNumber ?? 100;
+            var currentIndex = validPages.IndexOf(current);
+            if (currentIndex > 0)
+            {
+                pageNumber = validPages[currentIndex - 1];
+                NavigateToPage(pageNumber.ToString());
+            }
+            
+            inputBuffer = "";
         }
     }
 
@@ -91,18 +150,39 @@
         inputDisplay = pageNumber?.ToString() ?? "xxx";
         StateHasChanged();
     }
+    
+    private List<int> GetValidPages()
+    {
+        var valid = new List<int>() { 100, 200 };
+        for (int i = 0; i < _posts.Count; i++)
+        {
+            valid.Add(201 + i);
+        }
+        return valid;
+    }
 
     private bool CheckIfViablePage(string s)
     {
         if (int.TryParse(s, out int result))
         {
             var valid = new List<int>() { 100, 200 };
+            for (int i = 0; i < _posts.Count; i++)
+            {
+                valid.Add(201 + i);
+            }
             if (valid.Contains(result) )
             {
                 return true;
             }
         }
         return false;
+    }
+
+    private ElementReference _containerRef;
+
+    private void FocusContainer()
+    {
+        _containerRef.FocusAsync();
     }
 
 }
