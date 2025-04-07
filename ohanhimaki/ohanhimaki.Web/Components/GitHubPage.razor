@@ -1,5 +1,65 @@
-﻿<h3>GitHubPage</h3>
+﻿@using System.Text.Json
+@using System.Net.Http
+@using System.Net.Http.Headers
+@using ohanhimaki.Web.Models
+
+<h1>GitHub Events</h1>
+
+@if (GitHubEvents != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Repository</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gitHubEvent in GitHubEvents)
+            {
+                <tr>
+                    <td>@gitHubEvent.type</td>
+                    <td>@gitHubEvent.repo.name</td>
+                    @* <td>@(string.Join(", ",gitHubEvent.payload.commits.Select(x => x.message)))</td> *@
+                    <td> <a href="@gitHubEvent.repo.url">repoon</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Ladataan GitHub-tapahtumia...</p>
+}
 
 @code {
-    
+    public List<GitHubEvent>? GitHubEvents { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadGithubEventsAsync();
+    }
+
+    private async Task LoadGithubEventsAsync()
+    {
+        try
+        {
+            var url = "https://api.github.com/users/ohanhimaki/events?per_page=20";
+            using var client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("User-Agent", "C# App");
+
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                GitHubEvents = JsonSerializer.Deserialize<List<GitHubEvent>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Virhe GitHub-tapahtumien lataamisessa: {ex.Message}");
+        }
+    }
 }

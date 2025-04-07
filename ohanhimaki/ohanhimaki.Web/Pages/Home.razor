@@ -136,19 +136,9 @@
 
     private bool CheckIfViablePage(string s)
     {
-        if (int.TryParse(s, out int result))
-        {
-            var valid = new List<int>() { 100, 200 };
-            for (int i = 0; i < _posts.Count; i++)
-            {
-                valid.Add(201 + i);
-            }
-            if (valid.Contains(result) )
-            {
-                return true;
-            }
-        }
-        return false;
+        var pages = PagesService.GetValidPages();
+        return pages.Contains(int.Parse(s));
+
     }
 
     private ElementReference _containerRef;
