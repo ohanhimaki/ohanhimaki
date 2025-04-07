@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{ED3A
 		Scripts\generate-index.ps1 = Scripts\generate-index.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownService", "MarkdownService\MarkdownService.csproj", "{27851F91-A1FF-4886-8EEC-FE11DAA40FAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,5 +19,9 @@ Global
 		{18DD7052-D5BB-4DA2-B1DA-7B33949935AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18DD7052-D5BB-4DA2-B1DA-7B33949935AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18DD7052-D5BB-4DA2-B1DA-7B33949935AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27851F91-A1FF-4886-8EEC-FE11DAA40FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27851F91-A1FF-4886-8EEC-FE11DAA40FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27851F91-A1FF-4886-8EEC-FE11DAA40FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27851F91-A1FF-4886-8EEC-FE11DAA40FAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
