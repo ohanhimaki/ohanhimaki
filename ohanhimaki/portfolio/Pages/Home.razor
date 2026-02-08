@@ -1,0 +1,46 @@
+﻿@page "/"
+@using Portfolio.Services
+@inject MarkdownService MarkdownService
+
+<PageTitle>Portfolio</PageTitle>
+
+
+
+
+
+<div class="content-container">
+    @if (_isLoading)
+    {
+        <div class="loading">Ladataan...</div>
+    }
+    else
+    {
+        @foreach (var block in _blocks)
+        {
+            @if (block.Type == "header")
+            {
+                <article class="card card-header">
+                    @((MarkupString)block.Content)
+                </article>
+            }
+            else
+            {
+                <div class="divider"></div>
+                <article class="card">
+                    @((MarkupString)block.Content)
+                </article>
+            }
+        }
+    }
+</div>
+
+@code {
+    private List<ContentBlock> _blocks = new();
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _blocks = await MarkdownService.ParseMarkdownToBlocksAsync("content/about.md");
+        _isLoading = false;
+    }
+}
