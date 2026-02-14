@@ -20,7 +20,6 @@ public class MarkdownService
         _pipeline = new MarkdownPipelineBuilder()
             .UseAdvancedExtensions()
             .Build();
-        
     }
 
     public async Task<List<ContentBlock>> ParseMarkdownToBlocksAsync(string markdownPath)
