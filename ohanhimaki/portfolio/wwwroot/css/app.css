@@ -15,6 +15,13 @@
     --purple: #d3869b;
     --aqua: #8ec07c;
     --orange: #fe8019;
+    
+    /* Override MudBlazor defaults with Gruvbox */
+    --mud-palette-background: var(--bg0);
+    --mud-palette-surface: var(--bg1);
+    --mud-palette-primary: var(--orange);
+    --mud-palette-text-primary: var(--fg1);
+    --mud-palette-text-secondary: var(--fg2);
 }
 
 * {
@@ -29,60 +36,51 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg0);
-    color: var(--fg1);
+    background-color: var(--bg0) !important;
+    color: var(--fg1) !important;
     line-height: 1.6;
 }
 
-/* Content container */
-.content-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+/* MudBlazor overrides for Gruvbox theme */
+.mud-paper {
+    background-color: var(--bg1) !important;
+    color: var(--fg1) !important;
 }
 
-.loading {
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--yellow);
-    padding: 4rem 0;
+.mud-card {
+    background-color: var(--bg1) !important;
 }
 
-/* Divider */
-.divider {
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--bg2), transparent);
-    margin: 2rem 0;
+.mud-divider {
+    background-color: var(--bg2) !important;
 }
 
-/* Card layout */
-.card {
-    background-color: var(--bg1);
-    border-radius: 8px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+/* Header card specific styling */
+.header-card img {
+    float: right;
+    max-width: 200px;
+    margin: 0 0 1rem 2rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.card-header {
-    text-align: center;
-    background-color: var(--bg0);
-    border: 2px solid var(--bg2);
-    margin-top: 2rem;
+.header-card::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.card-header h1 {
-    margin: 0;
-}
-
-.card h1 {
+/* Markdown content styling */
+.mud-card-content h1,
+.mud-paper h1 {
     color: var(--yellow);
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
 
-.card h2 {
+.mud-card-content h2,
+.mud-paper h2 {
     color: var(--orange);
     font-size: 2rem;
     margin-top: 1.5rem;
@@ -90,11 +88,12 @@ body {
     font-weight: 600;
 }
 
-.card h2:first-child {
+.mud-card-content h2:first-child {
     margin-top: 0;
 }
 
-.card h3 {
+.mud-card-content h3,
+.mud-paper h3 {
     color: var(--aqua);
     font-size: 1.5rem;
     margin-top: 1.5rem;
@@ -102,25 +101,30 @@ body {
     font-weight: 600;
 }
 
-.card p {
+.mud-card-content p,
+.mud-paper p {
     color: var(--fg1);
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
-.card ul, .card ol {
+.mud-card-content ul,
+.mud-card-content ol,
+.mud-paper ul,
+.mud-paper ol {
     margin-left: 2rem;
     margin-bottom: 1rem;
 }
 
-.card li {
+.mud-card-content li,
+.mud-paper li {
     color: var(--fg1);
     margin-bottom: 0.5rem;
 }
 
 /* Links */
 a {
-    color: var(--blue);
+    color: var(--blue) !important;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s;
@@ -164,7 +168,8 @@ blockquote {
 }
 
 /* Images */
-.card img {
+.mud-card-content img,
+.mud-paper img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
@@ -172,47 +177,20 @@ blockquote {
     display: block;
 }
 
-/* Float images in header card to the right */
-.card-header img {
-    float: right;
-    max-width: 200px;
-    margin: 0 0 1rem 2rem;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.card-header::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.card p img {
-    display: inline-block;
-    margin: 0.5rem 0;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 1rem 0.5rem;
-    }
-    
-    .card {
-        padding: 1.5rem;
-        border-radius: 4px;
-    }
-    
-    .card h1 {
+    .mud-card-content h1,
+    .mud-paper h1 {
         font-size: 2rem;
     }
     
-    .card h2 {
+    .mud-card-content h2,
+    .mud-paper h2 {
         font-size: 1.5rem;
     }
     
     /* Stack image on mobile */
-    .card-header img {
+    .header-card img {
         float: none;
         max-width: 150px;
         margin: 0 auto 1rem auto;

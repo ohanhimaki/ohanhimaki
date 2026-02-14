@@ -4,14 +4,10 @@
 
 <PageTitle>Portfolio</PageTitle>
 
-
-
-
-
-<div class="content-container">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-8 mb-8">
     @if (_isLoading)
     {
-        <div class="loading">Ladataan...</div>
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
     }
     else
     {
@@ -19,20 +15,22 @@
         {
             @if (block.Type == "header")
             {
-                <article class="card card-header">
+                <MudPaper Elevation="2" Class="pa-8 mb-4 text-center header-card">
                     @((MarkupString)block.Content)
-                </article>
+                </MudPaper>
             }
             else
             {
-                <div class="divider"></div>
-                <article class="card">
-                    @((MarkupString)block.Content)
-                </article>
+                <MudDivider Class="my-4" />
+                <MudCard Elevation="3" Class="mb-4">
+                    <MudCardContent>
+                        @((MarkupString)block.Content)
+                    </MudCardContent>
+                </MudCard>
             }
         }
     }
-</div>
+</MudContainer>
 
 @code {
     private List<ContentBlock> _blocks = new();
