@@ -1,7 +1,7 @@
 using Markdig;
 using System.Text.RegularExpressions;
 
-namespace Portfolio.Services;
+namespace Portfolio.Web.Services;
 
 public class ContentBlock
 {

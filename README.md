@@ -9,10 +9,10 @@ Finland - Seinäjoki
 
 ## Kuka minä olen?
 
-Kokenut kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy microsoftin 
-Experienced **Software and BI Developer** with a strong Microsoft ecosystem background. I combine hands-on development with team leadership and office management responsibilities. Especially interested in data platforms, analytics, and building maintainable solutions that actually get used.
+Kokenut kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy Microsoft SQL bi-stackistä sekä Microsoft fabricista. Sovelluskehitystä toteutettu dotnet stackillä (integraatiot + web apps, blazor)  sekä React + angular.
 
-Comfortable working between business and technology – translating requirements into clean, working systems.
+---
+
 
 ## Key Skills
 
@@ -24,9 +24,9 @@ Comfortable working between business and technology – translating requirements
 
 ## Work Experience
 
-## Software / BI Developer · Office Manager · Supervisor  
-**[Company Name]** · Finland  
-*20XX – Present*
+### Software / BI Developer · Office Manager · Supervisor  
+**[Pinja]** · Finland  
+*2019 – Present*
 
 - Design and maintain data models and BI solutions (SSAS, data warehouses)
 - Develop internal tools and applications using C# and modern Microsoft technologies
@@ -36,13 +36,13 @@ Comfortable working between business and technology – translating requirements
 
 ## Selected Projects
 
-## Data Platform & Analytics
+### Data Platform & Analytics
 
 - Built and maintained data warehouse solutions integrating multiple source systems
 - Worked with medallion architecture concepts (Bronze / Silver / Gold)
 - Focus on data quality, naming conventions, and documentation
 
-## Developer Tools & Side Projects
+### Developer Tools & Side Projects
 
 - CLI application for home use (`mts.home.cli`)
 - Blazor-based Markdown blogging platform
@@ -51,7 +51,7 @@ Comfortable working between business and technology – translating requirements
 
 ## Education
 
-## B.Sc. in Information Technology  
+### B.Sc. in Information Technology  
 **[University / School Name]**
 
 - Focus on software development and data-related topics

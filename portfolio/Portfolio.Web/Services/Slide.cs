@@ -1,4 +1,4 @@
-namespace Portfolio.Services;
+namespace Portfolio.Web.Services;
 
 public class Slide
 {
