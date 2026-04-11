@@ -9,18 +9,18 @@ Finland - Seinäjoki
 
 ## Kuka minä olen?
 
-Kokenut kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy Microsoft SQL bi-stackistä sekä Microsoft fabricista. Sovelluskehitystä toteutettu dotnet stackillä (integraatiot + web apps, blazor)  sekä React + angular.
+Kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy Microsoft SQL bi-stackistä sekä Microsoft fabricista. Sovelluskehitystä toteutettu dotnet stackillä (integraatiot + web apps, blazor)  sekä React + angular.
 
 ---
 
 
 ## Key Skills
 
-- **Languages & Tech:** C#, SQL, PowerShell, Markdown  
+- **Languages & Tech:** C#, SQL, Python,  Typescript  
 - **Data & Analytics:** SSAS, Data Warehousing, Delta Lake, Microsoft Fabric, BI modeling  
 - **Platforms:** Windows, Azure, Microsoft ecosystem  
-- **Frontend & Apps:** Blazor WASM, Angular  
-- **Other:** OAuth2, API integrations, CLI tools
+- **Frontend & Apps:** Blazor, React, Angular
+- **Other:**  CLI tools,API integrations
 
 ## Work Experience
 

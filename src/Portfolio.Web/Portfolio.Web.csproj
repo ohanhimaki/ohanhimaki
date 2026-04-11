@@ -14,4 +14,23 @@
     <PackageReference Include="MudBlazor" Version="8.15.0" />
   </ItemGroup>
 
+  <!-- Serve content folders locally in development. In production these come from GitHub raw URLs. -->
+  <ItemGroup>
+    <Content Include="..\..\blog\**\*">
+      <Link>wwwroot\blog\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\playbook\**\*">
+      <Link>wwwroot\playbook\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\resources\**\*">
+      <Link>wwwroot\resources\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
