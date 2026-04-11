@@ -3,9 +3,14 @@ using System.Text.RegularExpressions;
 
 namespace Portfolio.Web.Services;
 
+public enum ContentBlockType
+{
+    Header,
+    Section
+}
 public class ContentBlock
 {
-    public string Type { get; set; } = "section"; // "header" or "section"
+    public ContentBlockType Type { get; set; } = ContentBlockType.Section;
     public string Content { get; set; } = string.Empty;
 }
 
@@ -35,7 +40,6 @@ public class MarkdownService
         // Jaetaan H1 ja H2 otsikoiden perusteella
         var lines = markdown.Split('\n');
         var currentContent = new List<string>();
-        var isFirstBlock = true;
 
         foreach (var line in lines)
         {
@@ -46,14 +50,13 @@ public class MarkdownService
                 if (currentContent.Count > 0)
                 {
                     var html = Markdown.ToHtml(string.Join("\n", currentContent), _pipeline);
-                    blocks.Add(new ContentBlock { Type = "section", Content = html });
+                    blocks.Add(new ContentBlock { Type = ContentBlockType.Section, Content = html });
                     currentContent.Clear();
                 }
 
                 // Lisää H1 omana korttinaan
                 var h1Html = Markdown.ToHtml(line, _pipeline);
-                blocks.Add(new ContentBlock { Type = "header", Content = h1Html });
-                isFirstBlock = false;
+                blocks.Add(new ContentBlock { Type = ContentBlockType.Header, Content = h1Html });
             }
             // Jos H2, tallenna edellinen ja aloita uusi sektio
             else if (line.Trim().StartsWith("## "))
@@ -62,7 +65,7 @@ public class MarkdownService
                 if (currentContent.Count > 0)
                 {
                     var html = Markdown.ToHtml(string.Join("\n", currentContent), _pipeline);
-                    blocks.Add(new ContentBlock { Type = "section", Content = html });
+                    blocks.Add(new ContentBlock { Type = ContentBlockType.Section, Content = html });
                     currentContent.Clear();
                 }
 
@@ -79,7 +82,7 @@ public class MarkdownService
         if (currentContent.Count > 0)
         {
             var html = Markdown.ToHtml(string.Join("\n", currentContent), _pipeline);
-            blocks.Add(new ContentBlock { Type = "section", Content = html });
+            blocks.Add(new ContentBlock { Type = ContentBlockType.Section, Content = html });
         }
 
         return blocks;

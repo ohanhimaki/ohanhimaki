@@ -13,7 +13,7 @@
     {
         @foreach (var block in _blocks)
         {
-            @if (block.Type == "header")
+            @if (block.Type == ContentBlockType.Header)
             {
                 <MudPaper Elevation="2" Class="pa-8 mb-4 text-center header-card">
                     @((MarkupString)block.Content)
