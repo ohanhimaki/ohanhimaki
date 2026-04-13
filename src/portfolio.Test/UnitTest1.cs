@@ -1,4 +1,5 @@
-﻿using Portfolio.Web.Services;
+﻿using Microsoft.Extensions.Configuration;
+using Portfolio.Web.Services;
 
 namespace portfolio.Test;
 
@@ -10,7 +11,8 @@ public class UnitTest1
     public void Test1()
     {
       var httpClient = new HttpClient();
-      var markdownService = new MarkdownService(httpClient);
+      var config = new ConfigurationBuilder().Build();
+      var markdownService = new MarkdownService(httpClient, config);
 
       var result = markdownService.ParseMarkdownToBlocks(exampleMarkdown);
 

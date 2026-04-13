@@ -2,9 +2,8 @@
 
 ![Profile](images/example.png)
 
-**Software / BI Developer · Office Manager · Supervisor**  
-Finland  
-📧 email@example.com · 🔗 LinkedIn / GitHub
+**Software / BI Developer**  
+Finland  - Seinäjoki 
 
 ## Profile
 

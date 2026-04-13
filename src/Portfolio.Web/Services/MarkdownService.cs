@@ -1,4 +1,5 @@
 using Markdig;
+using Microsoft.Extensions.Configuration;
 using System.Text.RegularExpressions;
 
 namespace Portfolio.Web.Services;
@@ -18,18 +19,28 @@ public class MarkdownService
 {
     private readonly HttpClient _httpClient;
     private readonly MarkdownPipeline _pipeline;
+    private readonly string _contentBaseUrl;
 
-    public MarkdownService(HttpClient httpClient)
+    public MarkdownService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
+        _contentBaseUrl = configuration["ContentBaseUrl"] ?? string.Empty;
         _pipeline = new MarkdownPipelineBuilder()
             .UseAdvancedExtensions()
             .Build();
     }
 
-    public async Task<List<ContentBlock>> ParseMarkdownToBlocksAsync(string markdownPath)
+    private string ResolveUrl(string contentPath)
     {
-        var markdown = await _httpClient.GetStringAsync(markdownPath);
+        if (string.IsNullOrEmpty(_contentBaseUrl))
+            return contentPath;
+        return $"{_contentBaseUrl.TrimEnd('/')}/{contentPath.TrimStart('/')}";
+    }
+
+    public async Task<List<ContentBlock>> ParseMarkdownToBlocksAsync(string contentPath)
+    {
+        var url = ResolveUrl(contentPath);
+        var markdown = await _httpClient.GetStringAsync(url);
         return ParseMarkdownToBlocks(markdown);
     }
 
