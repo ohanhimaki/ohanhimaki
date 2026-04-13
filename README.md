@@ -14,6 +14,10 @@ Microsoft SQL bi-stackistä sekä Microsoft fabricista.
 Sovelluskehitystä toteutettu dotnet stackillä
 (integraatiot + web apps, blazor)  sekä React + angular.
 
+[dotfiles](https://github.com/ohanhimaki/dotfiles)
+[blog](./blog/README.md)
+[playbook](./playbook/README.md)
+
 ---
 
 
