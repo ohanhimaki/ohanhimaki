@@ -1,64 +1,61 @@
 # Olli Hanhimäki
 
-![Profile](images/example.png)
+![Profile](resources/images/mina26.png)
 
-**Software / BI Developer  - IT-Tradenomi**  
+**Software / BI Developer - IT-Tradenomi**  
 Finland - Seinäjoki
 [Github](https://www.github.com/ohanhimaki)
 [LinkedId](https://www.linkedin.com/in/ohanhimaki)
 
 ## Kuka minä olen?
 
-Kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy Microsoft SQL bi-stackistä sekä Microsoft fabricista. Sovelluskehitystä toteutettu dotnet stackillä (integraatiot + web apps, blazor)  sekä React + angular.
+Kehittäjä bi-yksiköstä, osaamista ja kokemusta löytyy
+Microsoft SQL bi-stackistä sekä Microsoft fabricista.
+Sovelluskehitystä toteutettu dotnet stackillä
+(integraatiot + web apps, blazor)  sekä React + angular.
 
 ---
 
 
-## Key Skills
+## Osaamiseni
 
 - **Languages & Tech:** C#, SQL, Python,  Typescript  
 - **Data & Analytics:** SSAS, Data Warehousing, Delta Lake, Microsoft Fabric, BI modeling  
-- **Platforms:** Windows, Azure, Microsoft ecosystem  
 - **Frontend & Apps:** Blazor, React, Angular
-- **Other:**  CLI tools,API integrations
+- **BI:** Microsoft Sql server bi-stack, Fabric 
 
-## Work Experience
+## Työkokemukseni
 
-### Software / BI Developer · Office Manager · Supervisor  
+### Software / BI Developer   
 **[Pinja]** · Finland  
 *2019 – Present*
 
-- Design and maintain data models and BI solutions (SSAS, data warehouses)
-- Develop internal tools and applications using C# and modern Microsoft technologies
-- Act as Office Manager and Supervisor, supporting team wellbeing and performance
-- Participate in architectural decisions and cross-team collaboration
-- Mentor colleagues and help grow team capabilities
+- Microsoft Sql server bi-stackillä ympäristöjen toteutus ja ylläpito
+- Kevyitä ylläpitonäyttöjä angularilla sekä blazorilla.
+- Fabric kehitys ja arkkitehtuuri-suunnittelu
 
-## Selected Projects
+## Nostoja projekteistani
 
-### Data Platform & Analytics
+### Fabric - arkkitehtuurin-suunnittelu ja kehitys
 
-- Built and maintained data warehouse solutions integrating multiple source systems
-- Worked with medallion architecture concepts (Bronze / Silver / Gold)
-- Focus on data quality, naming conventions, and documentation
+Noin 3 vuoden aikana päässyt jo kokemaan kaikenlaista tämän kanssa, näiden
+mahdollisuuksien myötä itsellä hyvä kuva mielessä kuinka näitä hommia voi
+toteuttaa tehokkaasti ja ylläpidettävästi.
 
-### Developer Tools & Side Projects
+### Sovelluskehitys BI-tiimissä
 
-- CLI application for home use (`mts.home.cli`)
-- Blazor-based Markdown blogging platform
-- Excel-based SQL parsing and automation tools
-- Exploring reusable libraries for Markdown-driven content
+BI-tekemisen tueksi useissa projekteissa toteutetaan erilaisia ylläpitonäyttöjä,
+joiden kautta voidaan ylläpitää esimerkiksi ennustamisen parametrejä. Monessa
+tapauksessa myös tehty laajamittaisempia sovelluksia esimerkiksi ennustamiseen. 
 
-## Education
+## Koulutus
 
-### B.Sc. in Information Technology  
-**[University / School Name]**
+### Microsoft sertifikaatit
 
-- Focus on software development and data-related topics
+- DP-600
+- DP-700
 
-## Interests & Professional Development
+### IT-Tradenomi - Vaasa
 
-- Continuous learning (Microsoft Fabric, Delta Lake, DP-600)
-- Blogging and open-source contributions
-- Interested in working towards **Microsoft MVP**
-- Building tools that make developers’ lives easier
+**[Vaasan AMK 2011]**
+
