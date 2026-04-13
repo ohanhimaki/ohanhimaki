@@ -1,0 +1,44 @@
+﻿@page "/"
+@using Portfolio.Web.Services
+@inject MarkdownService MarkdownService
+
+<PageTitle>Portfolio</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-8 mb-8">
+    @if (_isLoading)
+    {
+        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+    }
+    else
+    {
+        @foreach (var block in _blocks)
+        {
+            @if (block.Type == ContentBlockType.Header)
+            {
+                <MudPaper Elevation="2" Class="pa-8 mb-4 text-center header-card">
+                    @((MarkupString)block.Content)
+                </MudPaper>
+            }
+            else
+            {
+                <MudDivider Class="my-4" />
+                <MudCard Elevation="3" Class="mb-4">
+                    <MudCardContent>
+                        @((MarkupString)block.Content)
+                    </MudCardContent>
+                </MudCard>
+            }
+        }
+    }
+</MudContainer>
+
+@code {
+    private List<ContentBlock> _blocks = new();
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _blocks = await MarkdownService.ParseMarkdownToBlocksAsync("content/about.md");
+        _isLoading = false;
+    }
+}
