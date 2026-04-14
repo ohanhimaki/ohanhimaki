@@ -5,17 +5,172 @@ specification {
     }
   }
 
+  relationship maintains {
+    color amber
+  }
+
+  relationship uses {
+    color blue
+  }
+
   element system {
     style {
       shape: rectangle;
     }
   }
 
+  element database {
+    style {
+      shape: cylinder;
+      color green
+    }
+  }
+
+  element app {
+    style {
+      shape: browser;
+      color sky
+    }
+  }
+  relationship app_reads {
+    color sky
+    line dotted
+    tail normal
+    head none
+  }
+
+  relationship app_reads_writes {
+    color sky
+    line solid
+    tail normal
+    head normal
+  }
+
+
+  element etl_tool {
+    style {
+      shape: queue;
+      color indigo
+    }
+  }
+  relationship etl_reads {
+    color indigo
+    line dotted
+    tail normal
+    head none
+  }
+
+  relationship etl_writes {
+    color indigo
+    line solid
+    tail none
+    head normal
+  }
+
+  element semanticmodel {
+    style {
+      shape: storage;
+      color amber
+    }
+  }
+  relationship semanticmodel_reads {
+    color amber
+    line dotted
+    tail normal
+    head none
+  }
+
+
 }
 
 model {
-  developer = actor "Developer"
-  system = system "System"
+  developer = actor "Developer" {
+    style {
+      color amber
+
+    }
+    .maintains old_system
+  }
+  base_user = actor "Base User" {
+    style {
+      color primary
+
+    }
+    .uses old_system
+  }
+  old_system = system "Old System" {
+    style {
+      color red
+
+    }
+    antiquedatabase = database "Antique Database" {
+
+    }
+    oldforecastapp = app "Old Forecast App" {
+
+      .app_reads_writes antiquedatabase
+    }
+
+    oldreportingapp = app "Old Reporting App" {
+
+      .app_reads antiquedatabase
+    }
+
+
+  }
+  new_system = system "New System" {
+    style {
+      color green
+
+    }
+    modern_database = database "Modern Database" {
+
+    }
+    staging_loader = etl_tool "Staging Loader" {
+
+      .etl_reads antiquedatabase
+      .etl_writes modern_database
+    }
+    new_forecast_app = app "New Forecast App" {
+
+      .app_reads_writes modern_database
+    }
+
+
+  }
+  cloud_system = system "Cloud System" {
+    style {
+      color indigo
+
+    }
+    bronze_database = database "Bronze Database" {
+
+    }
+    silver_database = database "Silver Database" {
+
+    }
+    gold_database = database "Gold Database" {
+
+    }
+    bronze_loader = etl_tool "Bronze Loader" {
+      .etl_reads antiquedatabase
+      .etl_reads modern_database
+      .etl_writes bronze_database
+    }
+
+    silver_loader = etl_tool "Silver Loader" {
+      .etl_reads bronze_database
+      .etl_writes silver_database
+    }
+
+    gold_loader = etl_tool "Gold Loader" {
+      .etl_reads silver_database
+      .etl_writes gold_database
+    }
+    semantic_model = semanticmodel "Semantic Model" {
+      .semanticmodel_reads gold_database
+    }
+  }
 
 
 
@@ -24,6 +179,13 @@ model {
 views {
   view index {
     title "Index"
+
+    include *
+
+  }
+
+  view cloud_system of cloud_system {
+    title "Cloud System"
 
     include *
 
