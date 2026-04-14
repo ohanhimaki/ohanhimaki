@@ -1,0 +1,31 @@
+specification {
+  element actor {
+    style {
+      shape: person;
+    }
+  }
+
+  element system {
+    style {
+      shape: rectangle;
+    }
+  }
+
+}
+
+model {
+  developer = actor "Developer"
+  system = system "System"
+
+
+
+}
+
+views {
+  view index {
+    title "Index"
+
+    include *
+
+  }
+}
