@@ -9,8 +9,14 @@ specification {
     color amber
   }
 
-  relationship uses {
+  relationship make_updates {
     color blue
+  }
+  relationship reads {
+    color blue
+    line dotted
+    tail normal
+    head none
   }
 
   element system {
@@ -79,8 +85,19 @@ specification {
     tail normal
     head none
   }
+  element report {
+    style {
+      shape: document;
+      color red
+    }
+  }
 
-
+  relationship report_reads {
+    color red
+    line dotted
+    tail normal
+    head none
+  }
 }
 
 model {
@@ -96,8 +113,16 @@ model {
       color primary
 
     }
-    .uses old_system
+    .make_updates old_system
   }
+
+  other_systems = system "Other Systems" {
+    style {
+      color gray
+
+    }
+  }
+
   old_system = system "Old System" {
     style {
       color red
@@ -170,6 +195,11 @@ model {
     semantic_model = semanticmodel "Semantic Model" {
       .semanticmodel_reads gold_database
     }
+
+    report = report "Report" {
+      .report_reads semantic_model
+    }
+
   }
 
 
@@ -189,5 +219,26 @@ views {
 
     include *
 
+  }
+  dynamic view old_forecast_to_cloud_reporting {
+    title "Old forecast data to cloud reporting"
+
+    include cloud_system, old_system
+
+    base_user -> oldforecastapp "Käyttäjä syöttää luvut"
+    oldforecastapp -> antiquedatabase "Kirjoittaa ennusteluvut kantaan"
+    antiquedatabase -> bronze_loader "Bronze loader lukee ennustelukuja sql yhteydellä gatewayn kautta"
+    bronze_loader -> bronze_database "Bronze database tallentaa raakadatan sellaisenaan"
+    bronze_database -> silver_loader "Silver loader lukee raakadatan ja muuttaa sen rakenteellisemmaksi"
+    silver_loader -> silver_database "Silver database tallentaa rakenteellisemman datan, tallennetaan scd2 muodossa"
+    silver_database -> gold_loader "Muodostetaan silverin tauluista raportoitavat kokonaisuudet"
+    gold_loader -> gold_database "Tallennetaan raportoitava data, haetaan vain viimeisin data"
+    gold_database -> semantic_model "Tarjotaan data käyttäjille semanttisen mallin kautta"
+    semantic_model -> report "Raportti hakee dataa semanttisesta mallista"
+
+    style new_system {
+      color muted
+      opacity 0%
+    }
   }
 }
