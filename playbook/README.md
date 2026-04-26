@@ -1,7 +1,9 @@
 # Playbook
 
-Tänne osioon päivitellään itselle muistiin asioita joista on itselle joskus
-ollut apua. 
+Tänne kirjoittelen työkaluista mitä itsellä on käytössä, sisältö on pieniä esittelyjä, konfigurointi-ohjeita ja hyödyllisiä toistettavia työvaiheita esim. kyselyiä kannan esiintymien hakemiseen näkymistä ja proseduureista, tai neovim substitute vinkkejä tehokkaaseen sql työskentelyyn. 
+
+
+![overview](../resources/images/tools-overview.excalidraw.png) 
 
 Rakennetta: 
 
@@ -40,16 +42,22 @@ tehokkaammin kuin erilaisilla gui sovelluksilla.
 
 ### Neovim
 
+# Editorit
 
 ## Neovim 
 
-## AI 
 
-### Gemini
+# AI 
 
-### Github copilot 
+## Gemini
 
-## BI-kehitys
+## Github copilot 
 
 
+
+# BI-kehitys
+
+## SSIS -maailma
+
+## Microsoft fabric
 
