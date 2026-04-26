@@ -1,23 +1,34 @@
 specification {
+
+  // color red rgb(255, 0, 0)
+  // color green rgb(0, 255, 0)
+  // color blue rgb(0, 0, 255)
+  color teal rgb(0, 128, 128)
+  color yellow rgb(255, 255, 0)
+  color cyan rgb(0, 255, 255)
+  color magenta rgb(255, 0, 255)
+
+  relationship write {
+    line solid
+  }
+
+  relationship command {
+    line solid
+    head diamond
+  }
+  relationship read {
+    line dotted
+    // tail normal
+    // head none
+  }
+
+
   element actor {
     style {
       shape: person;
     }
   }
 
-  relationship maintains {
-    color amber
-  }
-
-  relationship make_updates {
-    color blue
-  }
-  relationship reads {
-    color blue
-    line dotted
-    tail normal
-    head none
-  }
 
   element system {
     style {
@@ -38,19 +49,7 @@ specification {
       color sky
     }
   }
-  relationship app_reads {
-    color sky
-    line dotted
-    tail normal
-    head none
-  }
 
-  relationship app_reads_writes {
-    color sky
-    line solid
-    tail normal
-    head normal
-  }
 
 
   element etl_tool {
@@ -59,31 +58,13 @@ specification {
       color indigo
     }
   }
-  relationship etl_reads {
-    color indigo
-    line dotted
-    tail normal
-    head none
-  }
 
-  relationship etl_writes {
-    color indigo
-    line solid
-    tail none
-    head normal
-  }
 
   element semanticmodel {
     style {
       shape: storage;
       color amber
     }
-  }
-  relationship semanticmodel_reads {
-    color amber
-    line dotted
-    tail normal
-    head none
   }
   element report {
     style {
@@ -92,12 +73,6 @@ specification {
     }
   }
 
-  relationship report_reads {
-    color red
-    line dotted
-    tail normal
-    head none
-  }
 }
 
 model {
@@ -106,14 +81,14 @@ model {
       color amber
 
     }
-    .maintains old_system
+    .command old_system "Kehittää vanhaa järjestelmää"
   }
   base_user = actor "Base User" {
     style {
       color primary
 
     }
-    .make_updates old_system
+    .write old_system "Syöttää arvoja"
   }
 
   other_systems = system "Other Systems" {
@@ -133,32 +108,12 @@ model {
     }
     oldforecastapp = app "Old Forecast App" {
 
-      .app_reads_writes antiquedatabase
+      .write antiquedatabase "Tallentaa ennusteluvut kantaan"
     }
 
     oldreportingapp = app "Old Reporting App" {
 
-      .app_reads antiquedatabase
-    }
-
-
-  }
-  new_system = system "New System" {
-    style {
-      color green
-
-    }
-    modern_database = database "Modern Database" {
-
-    }
-    staging_loader = etl_tool "Staging Loader" {
-
-      .etl_reads antiquedatabase
-      .etl_writes modern_database
-    }
-    new_forecast_app = app "New Forecast App" {
-
-      .app_reads_writes modern_database
+      .write antiquedatabase "Tallentaa raportointiluvut kantaan"
     }
 
 
@@ -178,26 +133,26 @@ model {
 
     }
     bronze_loader = etl_tool "Bronze Loader" {
-      .etl_reads antiquedatabase
-      .etl_reads modern_database
-      .etl_writes bronze_database
+      .read antiquedatabase
+      .read new_system.modern_database
+      .write bronze_database "Kirjoittaa raakadatan sellaisenaan"
     }
 
     silver_loader = etl_tool "Silver Loader" {
-      .etl_reads bronze_database
-      .etl_writes silver_database
+      .read bronze_database
+      .write silver_database "Muuttaa raakadatan rakenteellisemmaksi, tallennetaan scd2 muodossa"
     }
 
     gold_loader = etl_tool "Gold Loader" {
-      .etl_reads silver_database
-      .etl_writes gold_database
+      .read silver_database
+      .write gold_database "Muodostetaan silverin tauluista raportoitavat kokonaisuudet, haetaan vain viimeisin data"
     }
     semantic_model = semanticmodel "Semantic Model" {
-      .semanticmodel_reads gold_database
+      .read gold_database
     }
 
     report = report "Report" {
-      .report_reads semantic_model
+      .read semantic_model
     }
 
   }

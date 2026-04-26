@@ -1,0 +1,26 @@
+model {
+
+  new_system = system "New System" {
+    style {
+      color green
+
+    }
+    modern_database = database "Modern Database Server" {
+      staging = database "Staging Database" {
+      }
+      wh = database "Warehouse Database" {
+      }
+    }
+    staging_loader = etl_tool "Staging Loader" {
+
+      .read old_system.antiquedatabase "Lukee järjestelmän dataa gatewayn kautta"
+      .write modern_database "Kirjoittaa"
+    }
+    new_forecast_app = app "New Forecast App" {
+
+      .write modern_database "Tallentaa ennusteluvut kantaan"
+    }
+
+
+  }
+}
