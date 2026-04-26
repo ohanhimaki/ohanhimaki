@@ -13,7 +13,7 @@ Rakennetta:
 
 ### Työkaluja 
 
-Glazewm, powertoys 
+Glazewm, powertoys , winget
 
 ## Linux 
 
@@ -40,12 +40,23 @@ tehokkaammin kuin erilaisilla gui sovelluksilla.
 
 ## Muita terminaalityökaluja 
 
-### Neovim
+Yazi, zoxide, rg, fzf, bat , eza
 
 # Editorit
 
 ## Neovim 
 
+## VSCode
+
+## Rider
+
+## Visual Studio
+
+## SSMS
+
+# Browser
+
+Chrome, Edge, eri use caset
 
 # AI 
 
@@ -53,6 +64,14 @@ tehokkaammin kuin erilaisilla gui sovelluksilla.
 
 ## Github copilot 
 
+# Git 
+
+Githubissa omat repot.
+
+Azuredevops töiden kautta tuttu.
+
+Lazygittiä omissa ympäristöissä, visualstudion git työkalua tai komentoriviä
+mahdollisuuksien mukaan asiakasympäristöissä.
 
 
 # BI-kehitys
