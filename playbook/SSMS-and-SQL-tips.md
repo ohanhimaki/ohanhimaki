@@ -28,6 +28,26 @@ Options -> Text Editor -> All Languages TAI Transact-SQL -> Scroll bars
 [x] Use map mode for vertical scroll bar 
 [x] Show Preview Tooltip
 
+### Gridistä kopiointi 
+
+Ongelma: Kun ajat kyselyn ja kopioit tulosruudukosta (Grid) pitkää tekstiä (kuten VARCHAR(MAX) tai XML-dataa), SSMS katkaisee tekstin oletuksena tietyn merkkimäärän jälkeen. Lisäksi solun sisällä olevat rivinvaihdot (CR/LF) muuttuvat usein välilyönneiksi kopioitaessa, mikä rikkoo esimerkiksi JSON- tai koodipätkät.
+
+Ratkaisu ja polku asetuksiin:
+Mene ylävalikosta: Tools -> Options
+Navigoi vasemmalta: Query Results -> SQL Server -> Results to Grid
+Muuta seuraavat asetukset:
+Max Characters Retrieved -> Non-XML data: Nosta tätä suuremmaksi (esim. 65535 tai enemmän tilanteen mukaan, maksimi on 2 MB luokkaa).
+Max Characters Retrieved -> XML data: Vaihda tilalle Unlimited (rajoittamaton).
+Ruksi kohtaan: Retain CR/LF on copy or save (Tämä on kriittinen, jotta rivinvaihdot säilyvät tekstiä kopioitessa!)
+
+💡 Huom: Nämä muutokset tulevat voimaan vasta uusiin kyselyikkunoihin (Query Tabs), jotka avaat asetuksen muuttamisen jälkeen.
+
+### Taulusta Create Script jättää tärkeitä asioita tuomatta 
+
+Asetuksista Scripting -> 
+
+Script indexes : true 
+
 
 
 # SQL server kyselyitä
