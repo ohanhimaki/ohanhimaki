@@ -1,7 +1,10 @@
+# Voisko tän tehdä AI:lla?
 
-< alustus >
+AI projektit herättää kovasti kiinnostusta ja hyviä ideoita putkahtelee esiin. 80% ideoista on kuitenkin syvemmän tarkastelun jälkeen osoittautuu data projekteiksi.
 
+Kaveri kuvaili juhannuksena vähä korkealentoista ideaa: Voisko AI:lla tehdä palvelun josta näkis tuulen nopeudet hyvin tarkalla sijainnilla. Puhui rakennusten etäisyyksistä ym, vaikutelman jäi että siinä päätettiin pallogrillin istutuspaikkaa eikä tuulivoimapuiston perustuksia. Hetken kuunneltua sain sopivan kohdan jossa keskeyttää ja nostaa esiin tass kuinka tämä on
 
+![Profile](../resources/images/voiskoailla1.excalidraw.png)
 
 ## Projektin toteutus 
 
