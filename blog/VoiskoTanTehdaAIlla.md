@@ -12,7 +12,7 @@ AI-projektit herättää kovasti kiinnostusta ja hyviä ideoita putkahtelee esii
 
 Kaveri kuvaili juhannuksena vähä korkealentoista ideaa: Voisko AI:lla tehdä palvelun josta näkis tuulen nopeudet hyvin tarkalla sijainnilla. Puhui rakennusten etäisyyksistä ym, vaikutelman jäi että siinä päätettiin pallogrillin istutuspaikkaa eikä tuulivoimapuiston perustuksia. Kehuin ideaa hyväksi ja toivotin hauskat juhannukset. Olin juuri lähdössä lenkille ja tästä saikin sopivaa haastetta mielelle.
 
-![kuva-suunnitelmasta](../resources/images/voiskoailla1.excalidraw.png)
+![kuva-suunnitelmasta](../resources/images/voiskoailla.excalidraw.png)
 
 ## Projektin toteutus
 
