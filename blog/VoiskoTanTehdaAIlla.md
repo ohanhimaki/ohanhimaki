@@ -2,9 +2,9 @@
 
 AI projektit herättää kovasti kiinnostusta ja hyviä ideoita putkahtelee esiin. 80% ideoista on kuitenkin syvemmän tarkastelun jälkeen osoittautuu data projekteiksi.
 
-Kaveri kuvaili juhannuksena vähä korkealentoista ideaa: Voisko AI:lla tehdä palvelun josta näkis tuulen nopeudet hyvin tarkalla sijainnilla. Puhui rakennusten etäisyyksistä ym, vaikutelman jäi että siinä päätettiin pallogrillin istutuspaikkaa eikä tuulivoimapuiston perustuksia. Hetken kuunneltua sain sopivan kohdan jossa keskeyttää ja nostaa esiin tass kuinka tämä on
+Kaveri kuvaili juhannuksena vähä korkealentoista ideaa: Voisko AI:lla tehdä palvelun josta näkis tuulen nopeudet hyvin tarkalla sijainnilla. Puhui rakennusten etäisyyksistä ym, vaikutelman jäi että siinä päätettiin pallogrillin istutuspaikkaa eikä tuulivoimapuiston perustuksia. Kehuin ideaa hyväksi ja toivotin hauskat juhannukset. Olin juuri lähdössä lenkille ja tästä saikin sopivaa haastetta mielelle. 
 
-![Profile](../resources/images/voiskoailla1.excalidraw.png)
+![kuva-suunnitelmasta](../resources/images/voiskoailla1.excalidraw.png)
 
 ## Projektin toteutus 
 
@@ -104,4 +104,8 @@ Tai mahdollisesti olisko paras jos aikajakson lisäksi aukeais sateliitti kuva m
 
 ## Lopetus
 
-draft: hyttysiä, onko arvoa, vertaa chatgpt + kuva ja teksti: kummas tuulee enemmän? -> Vakuuttavalla äänellä, todennäköisyys osua yhtä hyvä kuin sääennusteella?
+Projektille on hyvä pohtia ylittääkö odotettu arvo arvioidut kustannukset. Tämä raja on madaltunut paljon AI-työkalujen tehostaessa kehitystä. Kuitenkaan kaikki pitkälle jalostetutkaan ideat eivät ole edelleenkään toteutuksen arvoisia. 
+
+Tämä jää omalta osalta lyhyeksi aivojumpaksi. Mielenkiintoista olisi kuitenkin tietää miten tämä vertautuisi chatgpt:lle esitettävää kuva + kysymys "*Kummassa tuulee enemmän*" viestiin. Tuntuu kuitenkin että keskiverto suomalainen luottaa enemmän suuriin kielimalleihin kuin sääennusteisiin. 
+
+Mutta saisiko tämän projektin pivotoitua hyttysten välttelemiseen, siinä voisin nähdä todellista arvoa.
