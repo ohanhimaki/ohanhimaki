@@ -30,9 +30,9 @@ aidrivenworkflow/
 │   ├─ setup.sh             # setup scriptit voivat sisältää myös mm. ympäristön repojen kloonaamisen komennot.
 │   └─ root-ai-files/       # Tänne tulee esim AGENTS.md, joka symlinkillä osoitetaan projektin juureen
 │     ├─ skills/            # täällä on ympäristön yhteisiä skillsejä,
-│     │  ├─── definition-of-done-and-next-steps.md            # kehitystiimin yhteisiin käytänteisiin ohjaavia ai-skillsejä
-│     │  └─── best-practices.md
-│     └───── AGENTS.md          # Tänne tulee esim AGENTS.md, joka symlinkillä osoitetaan projektin juureen
+│     │  ├─── definition-of-done-and-next-steps/SKILL.md   # kehitystiimin yhteisiin käytänteisiin ohjaavia ai-skillsejä
+│     │  └─── best-practices/SKILL.md
+│     └───── AGENTS.md          # AI työkalujen entrypoint
 │
 ├── company-portal/         # Ympäristön lähdekoodeja
 │   ├─ docs/                # sisältävät repokohtaisen dokumentaation

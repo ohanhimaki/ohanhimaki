@@ -15,8 +15,10 @@ central-context/
 └── root-ai-files/
     ├── AGENTS.md         # symlinkataan aidrivenworkflow/AGENTS.md
     └── skills/           # symlinkataan aidrivenworkflow/skills/
-        ├── best-practices.md
-        └── definition-of-done-and-next-steps.md
+        ├── best-practices/
+        │   └── SKILL.md
+        └── definition-of-done-and-next-steps/
+            └── SKILL.md
 ```
 
 ## Käyttöönotto

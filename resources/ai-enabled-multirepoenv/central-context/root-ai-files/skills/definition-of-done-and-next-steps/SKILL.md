@@ -1,3 +1,8 @@
+---
+name: definition-of-done-and-next-steps
+description: Milloin tehtävä lasketaan valmiiksi ja miten raportoidaan seuraavat askeleet. Käytä ennen tehtävän/PR:n merkitsemistä valmiiksi tai kun raportoit tilannetta.
+---
+
 # Skill: Definition of Done and Next Steps
 
 Käytä tätä skilliä kun päätät tehtävän valmiiksi tai raportoit tilannetta käyttäjälle/tiimille.

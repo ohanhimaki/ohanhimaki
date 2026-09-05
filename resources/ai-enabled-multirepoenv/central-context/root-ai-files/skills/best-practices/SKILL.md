@@ -1,3 +1,8 @@
+---
+name: best-practices
+description: Tiimin yhteiset koodaus- ja arkkitehtuurikäytänteet monirepo-ympäristössä. Käytä kun kirjoitat, muokkaat tai reviewaat koodia missä tahansa ympäristön repossa.
+---
+
 # Skill: Best Practices
 
 Käytä tätä skilliä kun kirjoitat tai muokkaat koodia missä tahansa tämän workflow-ympäristön
