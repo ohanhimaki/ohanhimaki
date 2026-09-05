@@ -21,16 +21,17 @@
         aidrivenworkflow/skills          -> central-context/root-ai-files/skills
 
     Symlinkin luonti vaatii Windowsilla joko admin-oikeudet tai Developer Mode päällä.
-    Jos symlink ei onnistu, skripti fallbackaa tavalliseen kopiointiin ja varoittaa,
-    että kopio ei pysy automaattisesti synkassa central-contextin kanssa.
+    Helpoin tapa: aja skripti "sudo pwsh -File ./setup.ps1" (Windows 11:n sisäänrakennettu
+    sudo). Jos symlink ei silti onnistu, skripti fallbackaa tavalliseen kopiointiin ja
+    varoittaa, että kopio ei pysy automaattisesti synkassa central-contextin kanssa.
 
 .EXAMPLE
     cd aidrivenworkflow/central-context
-    ./setup.ps1
+    sudo pwsh -File ./setup.ps1
 
 .EXAMPLE
     # myös repojen kloonaus repos.json:sta
-    ./setup.ps1 -CloneRepos
+    sudo pwsh -File ./setup.ps1 -CloneRepos
 #>
 
 [CmdletBinding()]

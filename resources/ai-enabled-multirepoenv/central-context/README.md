@@ -26,7 +26,7 @@ Ensimmäinen kertaalleen kloonaus:
 ```powershell
 git clone <central-context-repo-url> aidrivenworkflow/central-context
 cd aidrivenworkflow/central-context
-./setup.ps1 -CloneRepos   # symlinkit + repos.json:in kloonaus
+sudo pwsh -File ./setup.ps1 -CloneRepos   # symlinkit + repos.json:in kloonaus
 ```
 
 ```bash
@@ -38,15 +38,16 @@ cd aidrivenworkflow/central-context
 Pelkkä AGENTS.md/skills-symlinkkien päivitys (esim. skillsejä on lisätty):
 
 ```powershell
-./setup.ps1 -Force
+sudo pwsh -File ./setup.ps1 -Force
 ```
 
 ## Huomioita
 
 - **Windows-symlinkit** vaativat joko admin-oikeudet tai Developer Mode -asetuksen päällä
-  (`Settings > Update & Security > For developers`). Jos symlink epäonnistuu, skripti
-  fallbackaa kopiointiin — kopio ei tällöin päivity automaattisesti central-contextin
-  muutoksista, joten `-Force`-uudelleenajo tarvitaan päivityksiin.
+  (`Settings > Update & Security > For developers`). Helpoin tapa: aja skripti
+  `sudo pwsh -File ./setup.ps1` (Windows 11:n sisäänrakennettu `sudo`). Jos symlink silti
+  epäonnistuu, skripti fallbackaa kopiointiin — kopio ei tällöin päivity automaattisesti
+  central-contextin muutoksista, joten `-Force`-uudelleenajo tarvitaan päivityksiin.
 - **Suhteellinen sijainti**: symlinkit osoittavat central-context-kansion sisään, joten
   central-context on aina oltava suoraan `aidrivenworkflow/`-juuren alla.
 - **repos.json** on esimerkki — muokkaa oman tiimin repoilla, tai jätä `-CloneRepos`/`--clone`
