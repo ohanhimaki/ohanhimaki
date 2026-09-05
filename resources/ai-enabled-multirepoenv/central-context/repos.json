@@ -1,0 +1,10 @@
+[
+  {
+    "name": "company-portal",
+    "url": "git@github.com:esimerkkiorganisaatio/company-portal.git"
+  },
+  {
+    "name": "finance",
+    "url": "git@github.com:esimerkkiorganisaatio/finance.git"
+  }
+]
