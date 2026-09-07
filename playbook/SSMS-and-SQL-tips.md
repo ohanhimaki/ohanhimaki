@@ -15,6 +15,12 @@ Options -> Text Editor -> All Languages TAI Transact-SQL
 Kaikki ei välttämätty tykkää, mutta Word wrap on myös mahdollista kytkeä päälle
 täältä.
 
+### Pinned on separate row 
+
+Options -> Environment -> Tabs and Windows
+
+Pinned Tabs -> Show pinned tabs in a separate row
+
 ### Scrollbar map mode
 
 Scrollbarista voi näin tarkastella väreistä yms kuinka kaukana tietyt koodit on
