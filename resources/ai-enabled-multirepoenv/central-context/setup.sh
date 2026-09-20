@@ -53,7 +53,7 @@ echo "Workflow root: $WORKFLOW_ROOT"
 link_or_copy "$ROOT_AI_FILES/AGENTS.md" "$WORKFLOW_ROOT/AGENTS.md"
 
 # 2) yhteiset skillsit juureen
-link_or_copy "$ROOT_AI_FILES/skills" "$WORKFLOW_ROOT/skills"
+link_or_copy "$ROOT_AI_FILES/skills" "$WORKFLOW_ROOT/.agents/skills"
 
 # 3) valinnainen: kloonaa repos.json:issa listatut repot workflow-juureen
 if [ "$CLONE_REPOS" -eq 1 ]; then

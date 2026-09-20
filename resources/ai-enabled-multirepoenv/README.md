@@ -24,7 +24,8 @@ aidrivenworkflow/
 ├── local-dev/              # kehittäjän oma kansio, voi olla local git jos haluaa
 │   └─ tasks/               # sisältönä localissa lyhyen elinkaaren tavaraa, esim taskien ideointia jne.
 │
-├── central-context/        # kehitystiimin yhteinen konteksti ai työkaluille
+├── central-context/        # kehitystiimin yhteinen konteksti ai työkaluille, voi olla oma, tai keskitetysti esim ympäristön infrat sisältävässä repossa. 
+│   ├─ docs/                # Samassa kansiossa voi sijaita myös ympäristön central dokumentaatiot.
 │   ├─ README.md            # Kuvaus projektista, kehitys envin setup ohjeet.
 │   ├─ setup.ps1            # Scriptit root-ai-files tiedostojen shadowcopystä työkansion roottiin.
 │   ├─ setup.sh             # setup scriptit voivat sisältää myös mm. ympäristön repojen kloonaamisen komennot.
