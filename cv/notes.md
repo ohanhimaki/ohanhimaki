@@ -1,2 +1,4 @@
-# 
-pandoc .\cv.md -o cv.pdf --pdf-engine=typst
+# Julkaisu pdf:ksi 
+
+
+pandoc .\README.md -o cv-olli-hanhimaki.pdf --pdf-engine=typst
