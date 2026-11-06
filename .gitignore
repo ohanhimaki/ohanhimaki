@@ -483,3 +483,4 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 ohanhimaki/ohanhimaki.Web/wwwroot/blog/*
+/cv/cv*.pdf
